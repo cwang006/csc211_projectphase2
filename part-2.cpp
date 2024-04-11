@@ -16,7 +16,6 @@ void fun2(int& reg0, int& reg1, int& reg2){
     int reg3 = reg0 * reg1;
     int reg4 = (reg2 * reg1);
     reg3 = reg3 + reg4;
-    
 }
 
 int main(){
