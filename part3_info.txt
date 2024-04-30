@@ -1,0 +1,11 @@
+Implement a MIPS program for the below question.
+
+Develop a MIPS program for a vending machine. The machine can sell 3 different products: 
+1- Water
+2- Snacks
+3- Sandwiches.
+4- Meals
+
+Each of these products is assigned an option to be selected by the user (1 for water, 2 for snacks, 3 for sandwiches and 4 for Meals). 
+
+Your vending machine program will ask the user for the amount of money entered to the machine, and will allow the user to select multiple items as long as there is balance remaining. If the price of the item is more than the remaining balance the program should print to the customer that there is no enough balance and ask for another option. The user can exit the vending machine by entering option -1 to the vending machine and printing the remaining balance at the end. 
