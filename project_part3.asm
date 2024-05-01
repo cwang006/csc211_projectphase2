@@ -59,7 +59,7 @@ select_option:
 
 invalid_option:
 	li $v0, 4
-	la $a0, invalid			# Prints the options text
+	la $a0, invalid			# Prints the invalid text
 	syscall
 	j select_option
 	
