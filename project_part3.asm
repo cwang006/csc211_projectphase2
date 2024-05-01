@@ -3,6 +3,7 @@
     balance: .asciiz "Balance: $"
     options: .asciiz "Select the following: (1) for Water, (2) for Snacks, (3) for Sandwiches, (4) for Meals, and (-1) to EXIT " 
     selection: .asciiz "Selected: "
+    invalid: .asciiz "Invalid Selection. "
     insufficient: .asciiz "Insufficient balance. Please select another option or -1 to EXIT."
     newline: .asciiz "\n"
 .text
@@ -47,7 +48,21 @@ select_option:
 	beq $t1, 2, snacks
 	beq $t1, 3, sandwich
 	beq $t1, 4, meal
-    
+	
+	addi $t3, $zero, -1		# Store -1 into t3
+	slt $at, $t1, $t3		# Checks if user selection is less than -1
+	bne $at, $zero, invalid_option
+	
+	addi $t4, $zero, 4		# Store 4 into t4
+	slt $at, $t1, $t4		# Checks if user selection is greater than 4
+	bne $at, $zero, invalid_option
+
+invalid_option:
+	li $v0, 4
+	la $a0, invalid			# Prints the options text
+	syscall
+	j select_option
+	
 exit:
 	li $v0, 4			# Print remaining balance before exiting
 	la $a0, balance
@@ -77,7 +92,7 @@ meal:
 
 new_balance: 
 	slt $at, $t0, $t2
-	bne $at, $zero, insufficient_bal	# Check if balance in t0 is greater than cost in t2
+	bne $at, $zero, insufficient_bal	# Check if balance in t1 is greater than cost in t3
 	
 	sub $t0, $t0, $t2
 	li $v0, 4
