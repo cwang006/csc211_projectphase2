@@ -76,7 +76,8 @@ meal:
 	j new_balance
 
 new_balance: 
-	ble $t0, 0, insufficient_bal	# Check if balance in t0 is greater than 0
+	slt $at, $t0, $t2
+	bne $at, $zero, insufficient_bal	# Check if balance in t0 is greater than cost in t2
 	
 	sub $t0, $t0, $t2
 	li $v0, 4
