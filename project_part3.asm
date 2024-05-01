@@ -54,7 +54,7 @@ select_option:
 	bne $at, $zero, invalid_option
 	
 	addi $t4, $zero, 4		# Store 4 into t4
-	slt $at, $t1, $t4		# Checks if user selection is greater than 4
+	slt $at, $t4, $t1		# Checks if user selection is greater than 4
 	bne $at, $zero, invalid_option
 
 invalid_option:
